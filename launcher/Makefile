@@ -2,7 +2,7 @@ TARGET		:= vitaWolfen
 WMODE		:= 1
 TITLE		:= 00WOLFMOD
 
-LIBS = -limgui -lvitagl -lSceAppmgr_stub -lSceDisplay_stub -lSceGxm_stub \
+LIBS = -limgui -lvitaGL -lSceAppmgr_stub -lSceDisplay_stub -lSceGxm_stub \
 	-lSceSysmodule_stub -lSceCtrl_stub -lm -lc -lSceCommonDialog_stub -lz \
 	-lSceTouch_stub
 
@@ -17,7 +17,7 @@ PREFIX  = arm-vita-eabi
 CC      = $(PREFIX)-gcc
 CXX      = $(PREFIX)-g++
 CFLAGS  = -Wl,-q -Ofast
-CXXFLAGS  = $(CFLAGS) -fno-exceptions
+CXXFLAGS  = $(CFLAGS) -fno-exceptions -I$(VITASDK)/$(PREFIX)/include/vitaGL -I$(VITASDK)/$(PREFIX)/include/imgui
 ASFLAGS = $(CFLAGS)
 
 all: $(TARGET).vpk

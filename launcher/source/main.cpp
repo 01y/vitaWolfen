@@ -1,6 +1,6 @@
 #include <vitasdk.h>
-#include "vitaGL.h"
-#include "imgui_vita.h"
+#include <vitaGL.h>
+#include <imgui_vita.h>
 #include <stdio.h>
 
 #define VERSION "r1b1"

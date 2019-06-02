@@ -1,23 +1,36 @@
 Modified version of Rinnegatamante's vitaWolfen
 
-features: 
+features:
+
 widescreen/ higher res
+
 true analog controls
+
 compiles on MacOS
 
+
 todo:
+
 implement FizzleFade
+
 mod support
+
 center interstitial screens properly
+
 control contstants adjustable in gui
+
+defaults (no bilinear)
+
 
 Compiling instructions:
 =======================
 
-Install VitaSDK, then clone and compile the following:
+Install VitaSDK, appropriate build tools for your OS, and 7-Zip, then clone and compile the following:
 
 imgui-vita: https://github.com/Rinnegatamante/imgui-vita
+
 SDL 1.2-GL: https://github.com/Rinnegatamante/SDL-Vita/tree/sdl12_gl
+
 VitaGL: https://github.com/Rinnegatamante/vitaGL
 
 Create the appropriate directories in your VitaSDK installation, and copy the respective header files into them, those directories being:

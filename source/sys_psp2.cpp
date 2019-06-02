@@ -1,7 +1,7 @@
 #include "wl_def.h"
 #pragma pack()
-#include "vitaGL.h"
-#include "imgui_vita.h"
+#include <vitaGL.h>
+#include <imgui_vita.h>
 
 int _newlib_heap_size_user = 192 * 1024 * 1024;
 
@@ -308,7 +308,7 @@ void ImGui_SetCallback() {
 	fd = sceIoOpen("ux0:/data/Wolfenstein 3D/vswap.sd3", SCE_O_RDONLY, 0777);
 	avail[5] = (fd >= 0);
 	sceIoClose(fd);
-	
+
 	scePowerSetArmClockFrequency(444);
 //	scePowerSetBusClockFrequency(222);
 //	scePowerSetGpuClockFrequency(222);

@@ -77,7 +77,7 @@ memptr demobuffer;
 //
 // current user input
 //
-int controlx, controly;         // range from -100 to 100 per tic
+int controlx, controly, controlxs;         // range from -100 to 100 per tic
 boolean buttonstate[NUMBUTTONS];
 
 int lastgamemusicoffset = 0;
@@ -367,20 +367,37 @@ void PollJoystickMove (void)
     IN_GetJoyDelta (&joyx, &joyy);
 	IN_GetJoyDelta2 (&joyx2, &joyy2);
 
-    int delta = buttonstate[bt_run] ? RUNMOVE * tics : BASEMOVE * tics;
+// mod: reverse normal and run states
+    int delta = buttonstate[bt_run] ? BASEMOVE * tics : RUNMOVE * tics;
 
-    if (joyx > 64 || buttonstate[bt_straferight])
+    if (joyx > 16 || buttonstate[bt_straferight])
+    {
         buttonstate[bt_straferight] = 1;
-    else if (joyx < -64  || buttonstate[bt_strafeleft])
+//        buttonstate[bt_strafe] = 1;
+        controlxs += int(joyx * 5.5f / (13 - mouseadjustment));
+    }
+    else if (joyx < -16  || buttonstate[bt_strafeleft])
+    {
         buttonstate[bt_strafeleft] = 1;
-    if (joyy > 64 || buttonstate[bt_movebackward])
-        controly += delta;
-    else if (joyy < -64 || buttonstate[bt_moveforward])
-        controly -= delta;
-	if (joyx2 > 64 || buttonstate[bt_turnright])
-        controlx += delta;
-    else if (joyx2 < -64  || buttonstate[bt_turnleft])
-        controlx -= delta;
+//        buttonstate[bt_strafe] = 1;
+        controlxs += int(joyx * 5.5f / (13 - mouseadjustment));
+    }
+    if (joyy > 16 || buttonstate[bt_movebackward])
+     //   controly += delta;
+        controly += int(joyy * 6.5f / (13 - mouseadjustment));
+
+    else if (joyy < -16 || buttonstate[bt_moveforward])
+    //    controly -= delta;
+        controly += int(joyy * 6.5f / (13 - mouseadjustment));
+
+	if (joyx2 > 16 || buttonstate[bt_turnright])
+    //    controlx += delta;
+        controlx += int(joyx2 * 8.0f / (13 - mouseadjustment));
+
+    else if (joyx2 < -16  || buttonstate[bt_turnleft])
+    //    controlx -= delta;
+        controlx += int(joyx2 * 8.0f / (13 - mouseadjustment));
+
 }
 
 /*
@@ -424,6 +441,9 @@ void PollControls (void)
     }
     else
         CalcTics ();
+
+
+    controlxs = 0;
 
     controlx = 0;
     controly = 0;
@@ -491,6 +511,13 @@ void PollControls (void)
         controly = max;
     else if (controly < min)
         controly = min;
+
+    if (controlxs > max)
+        controlxs = max;
+    else if (controlxs < min)
+        controlxs = min;
+
+
 
     if (demorecord)
     {
