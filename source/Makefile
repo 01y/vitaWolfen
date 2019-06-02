@@ -1,7 +1,7 @@
 TARGET		:= vitaWolfen
 
 #CFLAGS += -Wall
-CFLAGS += -Wl,-q -O2
+CFLAGS += -Wl,-q -Ofast
 CFLAGS += -Wpointer-arith
 CFLAGS += -Wreturn-type
 CFLAGS += -Wwrite-strings
@@ -10,17 +10,19 @@ CFLAGS += -DNO_STDIO_REDIRECT
 CFLAGS += -flto -DWMODE=$(WMODE)
 CFLAGS += -DMISSIONPACK=$(MISSIONPACK)
 CFLAGS += -mtune=cortex-a9 -mfpu=neon
+CFLAGS += -funroll-loops -fvariable-expansion-in-unroller
 
 PREFIX  = arm-vita-eabi
 CC      = $(PREFIX)-gcc
 CXX      = $(PREFIX)-g++
 
-CXXFLAGS += $(CFLAGS) -I$(VITASDK)/$(PREFIX)/include/SDL -fpermissive -fno-exceptions -std=c++11
+CXXFLAGS += $(CFLAGS) -I$(VITASDK)/$(PREFIX)/include/SDL -fpermissive -fno-exceptions -std=c++11 
 
 LDFLAGS += -lSDL_mixer -lSceAudio_stub -lSceLibKernel_stub -lSceDisplay_stub -lSceGxm_stub	\
 	-lmikmod -lSceSysmodule_stub -lSceCtrl_stub -lSceTouch_stub -lm -lSceNet_stub -lvorbis \
-	-lSceNetCtl_stub -lScePgf_stub -ljpeg -lfreetype -lc -lSDL -limgui -lvitaGL -lSceHid_stub \
-	-lScePower_stub -lSceCommonDialog_stub -lpng16 -lz -lSceAppmgr_stub -logg -lvorbisfile
+	-lSceNetCtl_stub -lScePgf_stub -ljpeg -lfreetype -lc -lSceHid_stub \
+	-lScePower_stub -lSceCommonDialog_stub -lpng16 -lz -lSceAppmgr_stub -logg -lvorbisfile \
+	-limgui -lvitaGL -lSDL 
 
 SRCS :=
 SRCS += fmopl.cpp
@@ -71,7 +73,7 @@ endif
 all: $(TARGET).vpk
 
 $(TARGET).vpk: $(TARGET).velf
-	vita-make-fself -s $< ..\release\eboot$(WMODE)$(MISSIONPACK).bin
+	vita-make-fself -s $< ../release/eboot$(WMODE)$(MISSIONPACK).bin
 	
 %.velf: %.elf
 	cp $< $<.unstripped$(WMODE)$(MISSIONPACK).elf

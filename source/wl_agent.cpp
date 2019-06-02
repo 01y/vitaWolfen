@@ -171,7 +171,7 @@ void ControlMovement (objtype *ob)
 
     oldx = player->x;
     oldy = player->y;
-
+/*
     if(buttonstate[bt_strafeleft])
     {
         angle = ob->angle + ANGLES/4;
@@ -193,33 +193,38 @@ void ControlMovement (objtype *ob)
         else
             Thrust(angle, BASEMOVE * MOVESCALE * tics);
     }
-
+*/
     //
     // side to side move
     //
-    if (buttonstate[bt_strafe])
-    {
+
         //
         // strafing
         //
         //
-        if (controlx > 0)
-        {
-            angle = ob->angle - ANGLES/4;
-            if (angle < 0)
-                angle += ANGLES;
-            Thrust (angle,controlx*MOVESCALE);      // move to left
-        }
-        else if (controlx < 0)
-        {
-            angle = ob->angle + ANGLES/4;
-            if (angle >= ANGLES)
-                angle -= ANGLES;
-            Thrust (angle,-controlx*MOVESCALE);     // move to right
-        }
-    }
-    else
+//        if (controlxs > 0)
+//        {
+    if (buttonstate[bt_strafeleft])
     {
+        angle = ob->angle - ANGLES/4;
+        if (angle < 0)
+            angle += ANGLES;
+        if (controlxs > 0)
+            controlxs = 0;
+        Thrust (angle,controlxs*MOVESCALE);      // move to left
+    }
+    else if (buttonstate[bt_straferight])
+    {
+        angle = ob->angle + ANGLES/4;
+        if (angle >= ANGLES)
+            angle -= ANGLES;
+        if (controlxs < 0)
+            controlxs = 0;
+        Thrust (angle,-controlxs*MOVESCALE);     // move to right
+    }
+
+//    else
+//    {
         //
         // not strafing
         //
@@ -233,7 +238,7 @@ void ControlMovement (objtype *ob)
         if (ob->angle < 0)
             ob->angle += ANGLES;
 
-    }
+//    }
 
     //
     // forward/backwards move

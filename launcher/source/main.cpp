@@ -1,9 +1,9 @@
 #include <vitasdk.h>
-#include <vitaGL.h>
-#include <imgui_vita.h>
+#include "vitaGL.h"
+#include "imgui_vita.h"
 #include <stdio.h>
 
-#define VERSION "1.6"
+#define VERSION "r1b1"
 
 SceUID avail[6];
 
@@ -73,11 +73,11 @@ int main(){
 		ImGui::SetNextWindowSize(ImVec2(960, 525), ImGuiSetCond_Always);
 		ImGui::Begin("vitaWolfen Launcher", nullptr, ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoBringToFrontOnFocus);
 		ImGui::TextColored(ImVec4(255,255,0,255),"Welcome to vitaWolfen Launcher!");
-		ImGui::Text("You're running vitaWolfen v.%s", VERSION);
+		ImGui::Text("You're running vitaWolfen-mod %s", VERSION);
 		ImGui::Spacing();
 		ImGui::Spacing();
 		ImGui::Text("Port Author: Rinnegatamante");
-		ImGui::Spacing();
+		ImGui::Text("Modified by: 01y");
 		ImGui::Spacing();
 		ImGui::TextColored(ImVec4(255,255,0,255),"Credits:");
 		ImGui::Text("rsn8887 for fixing shaders for vitaGL usage");

@@ -12,8 +12,12 @@ all:
 	make WMODE=3 MISSIONPACK=3 -C source
 	make clean -C source
 	make -C launcher
-	cp launcher/vitaWolfen.vpk vitaWolfen.vpk
-	
+	mv launcher/vitaWolfen.vpk vitaWolfen.vpk
+	rm launcher/vitaWolfen.elf
+	rm launcher/vitaWolfen.velf
+	rm launcher/param.sfo
+	date
+
 clean:
 	make clean -C source
 	make -C launcher clean

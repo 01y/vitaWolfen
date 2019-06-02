@@ -1,6 +1,6 @@
 TARGET		:= vitaWolfen
 WMODE		:= 1
-TITLE		:= WOLF00001
+TITLE		:= 00WOLFMOD
 
 LIBS = -limgui -lvitagl -lSceAppmgr_stub -lSceDisplay_stub -lSceGxm_stub \
 	-lSceSysmodule_stub -lSceCtrl_stub -lm -lc -lSceCommonDialog_stub -lz \
@@ -16,19 +16,19 @@ OBJS     := $(addsuffix .o,$(BINFILES)) $(CFILES:.c=.o) $(CPPFILES:.cpp=.o)
 PREFIX  = arm-vita-eabi
 CC      = $(PREFIX)-gcc
 CXX      = $(PREFIX)-g++
-CFLAGS  = -Wl,-q -O3
+CFLAGS  = -Wl,-q -Ofast
 CXXFLAGS  = $(CFLAGS) -fno-exceptions
 ASFLAGS = $(CFLAGS)
 
 all: $(TARGET).vpk
 
 $(TARGET).vpk: $(TARGET).velf
-	vita-make-fself -s $< ..\release\eboot.bin
+	vita-make-fself -s $< ../release/eboot.bin
 	vita-mksfoex -s TITLE_ID=$(TITLE) "$(TARGET)" param.sfo
 	cp -f param.sfo ../release/sce_sys/param.sfo
 	
 	#------------ Comment this if you don't have 7zip ------------------
-	7z a -tzip ./$(TARGET).vpk -r ..\release\sce_sys\* ..\release\eboot10.bin ..\release\eboot32.bin ..\release\eboot33.bin ..\release\eboot20.bin ..\release\eboot30.bin ..\release\eboot00.bin ..\release\eboot.bin 
+	7z a -tzip ./$(TARGET).vpk -r ../release/sce_sys/ ../release/eboot10.bin ../release/eboot32.bin ../release/eboot33.bin ../release/eboot20.bin ../release/eboot30.bin ../release/eboot00.bin ../release/eboot.bin 
 	#-------------------------------------------------------------------
 	
 %.velf: %.elf
