@@ -8,7 +8,7 @@ int _newlib_heap_size_user = 192 * 1024 * 1024;
 bool avail[6];
 uint64_t tmr1;
 bool inf_ammo = false;
-bool bilinear = true;
+bool bilinear = false;
 bool vflux_window = false;
 bool res_window = false;
 bool credits_window = false;
@@ -344,6 +344,7 @@ void ImGui_SetCallback() {
 	
 	SDL_SetVideoCallback(ImGui_callback);
 	
+	SDL_SetVideoModeBilinear(false);
 	loadImGuiCfg();
 	
 }

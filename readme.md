@@ -8,6 +8,8 @@ true analog controls
 
 compiles on MacOS
 
+no bilinear is default
+
 
 todo:
 
@@ -19,7 +21,7 @@ center interstitial screens properly
 
 control contstants adjustable in gui
 
-defaults (no bilinear)
+test config
 
 
 Compiling instructions:
