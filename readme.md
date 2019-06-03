@@ -23,6 +23,7 @@ control contstants adjustable in gui
 
 test config
 
+don't overwrite SDL
 
 Compiling instructions:
 =======================
@@ -39,7 +40,7 @@ Create the appropriate directories in your VitaSDK installation, and copy the re
 
 ```
 $VITASDK/arm-vita-eabi/include/imgui/
-$VITASDK/arm-vita-eabi/include/SDL/
+$VITASDK/arm-vita-eabi/include/SDLGL/
 $VITASDK/arm-vita-eabi/include/vitaGL/
 ```
 
@@ -48,6 +49,8 @@ copy the three respective compiled `.a` files into
 ```
 $VITASDK/arm-vita-eabi/lib/
 ```
+
+(after renaming `libSDL.a` to `libSDLGL.a`)
 
 then enter into the vitaWolfen directory and type `make`.
 

@@ -16,13 +16,13 @@ PREFIX  = arm-vita-eabi
 CC      = $(PREFIX)-gcc
 CXX      = $(PREFIX)-g++
 
-CXXFLAGS += $(CFLAGS) -I$(VITASDK)/$(PREFIX)/include/SDL -I$(VITASDK)/$(PREFIX)/include/imgui -I$(VITASDK)/$(PREFIX)/include/vitaGL -fpermissive -fno-exceptions -std=c++11
+CXXFLAGS += $(CFLAGS) -I$(VITASDK)/$(PREFIX)/include/SDLGL -I$(VITASDK)/$(PREFIX)/include/imgui -I$(VITASDK)/$(PREFIX)/include/vitaGL -fpermissive -fno-exceptions -std=c++11
 
 LDFLAGS += -lSDL_mixer -lSceAudio_stub -lSceLibKernel_stub -lSceDisplay_stub -lSceGxm_stub	\
 	-lmikmod -lSceSysmodule_stub -lSceCtrl_stub -lSceTouch_stub -lm -lSceNet_stub -lvorbis \
 	-lSceNetCtl_stub -lScePgf_stub -ljpeg -lfreetype -lc -lSceHid_stub \
 	-lScePower_stub -lSceCommonDialog_stub -lpng16 -lz -lSceAppmgr_stub -logg -lvorbisfile \
-	-limgui -lvitaGL -lSDL 
+	-limgui -lvitaGL -lSDLGL 
 
 SRCS :=
 SRCS += fmopl.cpp
