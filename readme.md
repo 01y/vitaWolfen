@@ -23,7 +23,7 @@ control contstants adjustable in gui
 
 test config
 
-don't overwrite SDL
+add option to use four regions of back touchscreen for additional "buttons"
 
 Compiling instructions:
 =======================
@@ -54,4 +54,3 @@ $VITASDK/arm-vita-eabi/lib/
 
 then enter into the vitaWolfen directory and type `make`.
 
-updating VitaSDK may overwrite the SDL files, at least, so some of the above steps may need to be repeated after doing so.
