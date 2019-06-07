@@ -10,10 +10,14 @@ compiles on MacOS
 
 no bilinear is default
 
+clear screen junk left by widescreen draws
+
 
 todo:
 
-implement FizzleFade
+icon
+
+implement FizzleFade, end sequences
 
 mod support
 
@@ -24,6 +28,8 @@ control contstants adjustable in gui
 test config
 
 add option to use four regions of back touchscreen for additional "buttons"
+
+crash on exit
 
 Compiling instructions:
 =======================

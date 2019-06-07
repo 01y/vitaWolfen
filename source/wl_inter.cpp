@@ -134,7 +134,9 @@ Victory (void)
     CA_CacheGrChunk (BJCOLLAPSE3PIC);
     CA_CacheGrChunk (BJCOLLAPSE4PIC);
 
-    VWB_Bar (0, 0, 320, 200, VIEWCOLOR);
+//    VWB_Bar (0, 0, 320, 200, VIEWCOLOR);
+    VWB_Bar (0, 0, screenWidth, screenHeight, VIEWCOLOR); //vita wolfmod
+
     VWB_DrawPic (124, 44, BJCOLLAPSE1PIC);
     VW_UpdateScreen ();
     VW_FadeIn ();
@@ -165,7 +167,8 @@ Victory (void)
     CA_CacheGrChunk (C_TIMECODEPIC);
 #endif
 
-    VWB_Bar (0, 0, 320, screenHeight / scaleFactor - STATUSLINES + 1, VIEWCOLOR);
+    VWB_Bar (0, 0, screenWidth, screenHeight / scaleFactor - STATUSLINES + 1, VIEWCOLOR); //vita wolfmod
+//    VWB_Bar (0, 0, 320, screenHeight / scaleFactor - STATUSLINES + 1, VIEWCOLOR);
     if (bordercol != VIEWCOLOR)
         DrawStatusBorder (VIEWCOLOR);
 
@@ -1037,7 +1040,7 @@ DrawHighScores (void)
 #else
     CA_CacheGrChunk (C_CODEPIC);
 #endif
-
+    VWB_Bar (0, 0, screenWidth, screenHeight, 0x00); //vita wolfmod
     ClearMScreen ();
     DrawStripes (10);
 
@@ -1055,6 +1058,7 @@ DrawHighScores (void)
 
 #else
     CacheLump (BACKDROP_LUMP_START, BACKDROP_LUMP_END);
+    VWB_Bar (0, 0, screenWidth, screenHeight, 0x00); //vita wolfmod
     ClearMScreen ();
     DrawStripes (10);
     UnCacheLump (BACKDROP_LUMP_START, BACKDROP_LUMP_END);

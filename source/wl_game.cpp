@@ -1470,6 +1470,8 @@ startplayloop:
                 VW_FadeOut ();
 
                 ClearMemory ();
+                //DrawPlayBorder(); //VL_ClearScreen(0); //vita wolfmod
+                VWB_BarScaledCoord (0,0,screenWidth,screenHeight-scaleFactor*(STATUSLINES-1),bordercol);
 
                 LevelCompleted ();              // do the intermission
                 if(viewsize == 21) DrawPlayScreen();

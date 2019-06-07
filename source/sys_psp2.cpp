@@ -309,10 +309,10 @@ void ImGui_SetCallback() {
 	avail[5] = (fd >= 0);
 	sceIoClose(fd);
 
-	scePowerSetArmClockFrequency(444);
-//	scePowerSetBusClockFrequency(222);
-//	scePowerSetGpuClockFrequency(222);
-//	scePowerSetGpuXbarClockFrequency(166);
+	scePowerSetArmClockFrequency(444); //333
+//	scePowerSetBusClockFrequency(222); //222
+//	scePowerSetGpuClockFrequency(222); //166
+//	scePowerSetGpuXbarClockFrequency(166); //111
 	
 	vindices = (uint16_t*)malloc(sizeof(uint16_t)*4);
 	colors = (float*)malloc(sizeof(float)*4*4);

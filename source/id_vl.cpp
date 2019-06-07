@@ -33,8 +33,8 @@ unsigned screenBits = 16;
 #endif
 #else
 boolean usedoublebuffering = true;
-unsigned screenWidth = 640; //320;
-unsigned screenHeight = 302; //200;
+unsigned screenWidth = 640;//960;//640; //320;
+unsigned screenHeight = 302;//453;//302; //200;
 unsigned screenBits = -1;      // use "best" color depth according to libSDL
 #endif
 
