@@ -10,26 +10,29 @@ compiles on MacOS
 
 no bilinear is default
 
-clear screen junk left by widescreen draws
+clear screen junk left by widescreen draws (title & menu screens appear in the top left corner for now)
 
+control contstants adjustable in gui
 
 todo:
 
-icon
+write readme, rename project, icon
 
-implement FizzleFade, end sequences
-
-mod support
-
-center interstitial screens properly
-
-control contstants adjustable in gui
+debug stats window
 
 test config
 
 add option to use four regions of back touchscreen for additional "buttons"
 
-crash on exit
+add .wl3 support
+
+correct death and victory animations in various circumstances
+
+crash on exit?
+
+mod support
+
+center interstitial screens properly
 
 Compiling instructions:
 =======================

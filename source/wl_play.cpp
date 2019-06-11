@@ -77,7 +77,12 @@ memptr demobuffer;
 //
 // current user input
 //
+//vita wolfmod
 int controlx, controly, controlxs;         // range from -100 to 100 per tic
+float joyconstx = 8.0f;
+float joyconsty = 6.5f;
+float joyconstxs = 5.5f;
+
 boolean buttonstate[NUMBUTTONS];
 
 int lastgamemusicoffset = 0;
@@ -373,30 +378,24 @@ void PollJoystickMove (void)
     if (joyx > 16 || buttonstate[bt_straferight])
     {
         buttonstate[bt_straferight] = 1;
-//        buttonstate[bt_strafe] = 1;
-        controlxs += int(joyx * 5.5f / (13 - mouseadjustment));
+        controlxs += int(joyx * joyconstxs / (13 - mouseadjustment));
     }
     else if (joyx < -16  || buttonstate[bt_strafeleft])
     {
         buttonstate[bt_strafeleft] = 1;
-//        buttonstate[bt_strafe] = 1;
-        controlxs += int(joyx * 5.5f / (13 - mouseadjustment));
+        controlxs += int(joyx * joyconstxs / (13 - mouseadjustment));
     }
     if (joyy > 16 || buttonstate[bt_movebackward])
-     //   controly += delta;
-        controly += int(joyy * 6.5f / (13 - mouseadjustment));
+        controly += int(joyy * joyconsty / (13 - mouseadjustment));
 
     else if (joyy < -16 || buttonstate[bt_moveforward])
-    //    controly -= delta;
-        controly += int(joyy * 6.5f / (13 - mouseadjustment));
+        controly += int(joyy * joyconsty / (13 - mouseadjustment));
 
 	if (joyx2 > 16 || buttonstate[bt_turnright])
-    //    controlx += delta;
-        controlx += int(joyx2 * 8.0f / (13 - mouseadjustment));
+        controlx += int(joyx2 * joyconstx / (13 - mouseadjustment));
 
     else if (joyx2 < -16  || buttonstate[bt_turnleft])
-    //    controlx -= delta;
-        controlx += int(joyx2 * 8.0f / (13 - mouseadjustment));
+        controlx += int(joyx2 * joyconstx / (13 - mouseadjustment));
 
 }
 

@@ -11,6 +11,7 @@ bool inf_ammo = false;
 bool bilinear = false;
 bool vflux_window = false;
 bool res_window = false;
+bool constants_window = false;
 bool credits_window = false;
 bool vflux_enabled = false;
 bool hide_menubar = false;
@@ -31,13 +32,13 @@ SDL_Shader shader = SDL_SHADER_NONE;
 bool cfg_exists = false;
 
 void loadImGuiCfg(){
-	FILE *f = fopen("ux0:data/Wolfenstein 3D/imgui.cfg", "rb");
+	FILE *f = fopen("ux0:data/Wolfenstein 3D/2imgui.cfg", "rb");
 	if (f){
 		char str[256];
 		fread(str, 1, 256, f);
 		fclose(f);
 		uint32_t a,b,c;
-		sscanf(str, "%u;%u;%f;%f;%u;%u;%f;%f;%f", &a, &shader, &screen_res_w, &screen_res_h, &b, &c, &vcolors[0], &vcolors[1], &vcolors[2]);
+		sscanf(str, "%u;%u;%f;%f;%u;%u;%f;%f;%f;%f;%f;%f", &a, &shader, &screen_res_w, &screen_res_h, &b, &c, &vcolors[0], &vcolors[1], &vcolors[2], &joyconstx, &joyconsty, &joyconstxs);
 		bilinear = (a == 1);
 		hide_menubar = (b == 1);
 		vflux_enabled = (c == 1);
@@ -64,7 +65,7 @@ void ImGui_callback() {
 				if (ImGui::MenuItem("Launch Wolfenstein 3D Full", nullptr, false, avail[1])){
 					sceAppMgrLoadExec("app0:/eboot10.bin", NULL, NULL);
 				}
-				if (ImGui::MenuItem("Launch Wolfenstein 3D: Spear of Destiny Shareware", nullptr, false, avail[2])){
+				if (ImGui::MenuItem("Launch Wolfenstein 3D: Spear of Destiny Demo", nullptr, false, avail[2])){
 					sceAppMgrLoadExec("app0:/eboot20.bin", NULL, NULL);
 				}
 				if (ImGui::MenuItem("Launch Wolfenstein 3D: Spear of Destiny Full", nullptr, false, avail[3])){
@@ -150,11 +151,14 @@ void ImGui_callback() {
 				if (ImGui::MenuItem("Hide Menubar", nullptr, hide_menubar)){
 					hide_menubar = !hide_menubar;
 				}
+				if (ImGui::MenuItem("Joystick Constants", nullptr, constants_window)){
+					constants_window = !constants_window;
+				}
 				ImGui::Separator();
 				if (ImGui::MenuItem("Save settings")){
-					FILE *f = fopen("ux0:data/Wolfenstein 3D/imgui.cfg", "wb+");
+					FILE *f = fopen("ux0:data/Wolfenstein 3D/2imgui.cfg", "wb+");
 					char str[256];
-					sprintf(str, "%u;%u;%f;%f;%u;%u;%f;%f;%f", bilinear ? 1 : 0, shader, screen_res_w, screen_res_h, hide_menubar ? 1 : 0, vflux_enabled ? 1 : 0, vcolors[0], vcolors[1], vcolors[2]);
+					sprintf(str, "%u;%u;%f;%f;%u;%u;%f;%f;%f;%f;%f;%f", bilinear ? 1 : 0, shader, screen_res_w, screen_res_h, hide_menubar ? 1 : 0, vflux_enabled ? 1 : 0, vcolors[0], vcolors[1], vcolors[2], joyconstx, joyconsty, joyconstxs);
 					fwrite(str, 1, strlen(str), f);
 					fclose(f);
 					cfg_exists = true;
@@ -183,7 +187,20 @@ void ImGui_callback() {
 		ImGui::Checkbox("Enable vFlux", &vflux_enabled);
 		ImGui::End();
 	}
-		
+//vita wolfmod
+	if (constants_window){
+		ImGui::Begin("Joystick Constants", &constants_window);
+		ImGui::SliderFloat("Back and Forth", &joyconsty, 0.0f, 16.0f, "%g");
+		ImGui::SliderFloat("Side to Side", &joyconstxs, 0.0f, 16.0f, "%g");
+		ImGui::SliderFloat("Turning", &joyconstx, 0.0f, 16.0f, "%g");
+		if (ImGui::Button("Defaults")){
+			joyconstx = 8.0f;
+			joyconsty = 6.5f;
+			joyconstxs = 5.5f;
+		}
+		ImGui::End();
+	}
+
 	if (res_window){
 		ImGui::Begin("Resolution", &res_window);
 		ImGui::SliderFloat("Width", &screen_res_w, 0.0f, 960.0f, "%g");

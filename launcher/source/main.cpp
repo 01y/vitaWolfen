@@ -3,7 +3,7 @@
 #include <imgui_vita.h>
 #include <stdio.h>
 
-#define VERSION "r1b2"
+#define VERSION "r1"
 
 SceUID avail[6];
 
@@ -43,7 +43,7 @@ int main(){
 			if (ImGui::MenuItem("Launch Wolfenstein 3D Shareware", nullptr, false, avail[0] >= 0)){
 				exit_code = 0;
 			}
-			if (ImGui::MenuItem("Launch Wolfenstein 3D Registered", nullptr, false, avail[1] >= 0)){
+			if (ImGui::MenuItem("Launch Wolfenstein 3D Full", nullptr, false, avail[1] >= 0)){
 				exit_code = 1;
 			}
 			if (ImGui::MenuItem("Launch Wolfenstein 3D: Spear of Destiny Demo", nullptr, false, avail[2] >= 0)){
@@ -94,7 +94,7 @@ int main(){
 			}
 		}
 		if (avail[1] >= 0){
-			if (ImGui::Button("Launch Wolfenstein 3D Registered")){
+			if (ImGui::Button("Launch Wolfenstein 3D Full")){
 				exit_code = 10;
 			}
 		}
