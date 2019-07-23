@@ -21,7 +21,7 @@ CXXFLAGS += $(CFLAGS) -I$(VITASDK)/$(PREFIX)/include/SDLGL -I$(VITASDK)/$(PREFIX
 LDFLAGS += -lSDL_mixer -lSceAudio_stub -lSceLibKernel_stub -lSceDisplay_stub -lSceGxm_stub	\
 	-lmikmod -lSceSysmodule_stub -lSceCtrl_stub -lSceTouch_stub -lm -lSceNet_stub -lvorbis \
 	-lSceNetCtl_stub -lScePgf_stub -ljpeg -lfreetype -lc -lSceHid_stub \
-	-lScePower_stub -lSceCommonDialog_stub -lpng16 -lz -lSceAppmgr_stub -logg -lvorbisfile \
+	-lScePower_stub -lSceCommonDialog_stub -lpng16 -lz -lSceAppMgr_stub -logg -lvorbisfile \
 	-limgui -lvitaGL -lSDLGL 
 
 SRCS :=
