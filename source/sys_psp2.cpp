@@ -1,3 +1,4 @@
+#include <vitasdk.h>
 #include "wl_def.h"
 #pragma pack()
 #include <vitaGL.h>

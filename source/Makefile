@@ -22,7 +22,7 @@ LDFLAGS += -lSDL_mixer -lSceAudio_stub -lSceLibKernel_stub -lSceDisplay_stub -lS
 	-lmikmod -lSceSysmodule_stub -lSceCtrl_stub -lSceTouch_stub -lm -lSceNet_stub -lvorbis \
 	-lSceNetCtl_stub -lScePgf_stub -ljpeg -lfreetype -lc -lSceHid_stub \
 	-lScePower_stub -lSceCommonDialog_stub -lpng16 -lz -lSceAppMgr_stub -logg -lvorbisfile \
-	-limgui -lvitaGL -lSDLGL 
+	-limgui -lvitaGL -lSDLGL -lSceDriverUser_stub
 
 SRCS :=
 SRCS += fmopl.cpp
