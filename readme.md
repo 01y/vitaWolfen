@@ -1,65 +1,75 @@
 Modified version of Rinnegatamante's vitaWolfen
 
-features:
 
-widescreen/ higher res
+Changes from upstream:
+==
 
-true analog controls
+* widescreen/ higher res
 
-compiles on MacOS
+* true analog controls
 
-no bilinear is default
+* compiles on MacOS and Linux
 
-clear screen junk left by widescreen draws (title & menu screens appear in the top left corner for now)
+* no bilinear is default
 
-control contstants adjustable in gui
+* clears screen junk left by widescreen draws (title & menu screens appear in the top left corner for now)
+
+* control contstants adjustable in gui
 
 todo:
+==
 
-write readme, rename project, icon
+High Priority:
 
-debug stats window
+- crash on exit?
 
-test config
+- mod support
 
-add option to use four regions of back touchscreen for additional "buttons"
+- write readme, rename project, icon
 
-add .wl3 support
+- debug stats window
 
-correct death and victory animations in various circumstances
+- test config
 
-crash on exit?
 
-mod support
+Low Priority:
 
-center interstitial screens properly
+- add option to use four regions of back touchscreen for additional "buttons"
+
+- center interstitial screens properly
+- add .wl3 support
+
+- resolution mode change for title/menu
+
+- correct death and victory animations in various circumstances
 
 Compiling instructions:
 =======================
 
-Install VitaSDK, appropriate build tools for your OS, and 7-Zip, then clone and compile the following:
+1) Install VitaSDK, appropriate build tools for your OS, and 7-Zip,
 
-imgui-vita: https://github.com/Rinnegatamante/imgui-vita
+2) then clone and compile [math-neon](https://github.com/Rinnegatamante/math-neon)
 
-SDL 1.2-GL: https://github.com/Rinnegatamante/SDL-Vita/tree/sdl12_gl
+3) copy `math_neon.h` to `$VITASDK/arm-vita-eabi/include/`
 
-VitaGL: https://github.com/Rinnegatamante/vitaGL
+4) copy `libmathneon.a` to `$VITASDK/arm-vita-eabi/lib/`
 
-Create the appropriate directories in your VitaSDK installation, and copy the respective header files into them, those directories being:
+5) Clone and compile [VitaGL](https://github.com/Rinnegatamante/vitaGL)
 
-```
-$VITASDK/arm-vita-eabi/include/imgui/
-$VITASDK/arm-vita-eabi/include/SDLGL/
-$VITASDK/arm-vita-eabi/include/vitaGL/
-```
+6) copy `vitaGL.h` to `$VITASDK/arm-vita-eabi/include/`
 
-copy the three respective compiled `.a` files into
+7) copy `libvitaGL.a` to `$VITASDK/arm-vita-eabi/lib/`
 
-```
-$VITASDK/arm-vita-eabi/lib/
-```
+8) Clone and compile [imgui-vita](https://github.com/Rinnegatamante/imgui-vita)
 
-(after renaming `libSDL.a` to `libSDLGL.a`)
+9) copy `imgui_vita.h`, `imconfig.h`, and `imgui_impl_vitagl.h` to `$VITASDK/arm-vita-eabi/include/`
 
-then enter into the vitaWolfen directory and type `make`.
+10) copy `libimgui.a` to `$VITASDK/arm-vita-eabi/lib/`
 
+11) Clone and compile the `sdl12` branch of the following fork of SDL-Vita: [SDL 1.2-GL](https://github.com/Rinnegatamante/SDL-Vita/tree/sdl12_gl)
+
+12) Create the directory `$VITASDK/arm-vita-eabi/include/SDLGL/` and copy the files in `SDL-Vita/include/` to it.
+
+13) Copy `libSDL.a` to `$VITASDK/arm-vita-eabi/lib/libSDLGL.a` (note the name change)
+
+14) Enter into the `vitaWolfen/` directory and type `make`.

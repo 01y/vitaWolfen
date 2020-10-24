@@ -16,7 +16,7 @@ PREFIX  = arm-vita-eabi
 CC      = $(PREFIX)-gcc
 CXX      = $(PREFIX)-g++
 
-CXXFLAGS += $(CFLAGS) -I$(VITASDK)/$(PREFIX)/include/SDLGL -I$(VITASDK)/$(PREFIX)/include/imgui -I$(VITASDK)/$(PREFIX)/include/vitaGL -fpermissive -fno-exceptions -std=c++11
+CXXFLAGS += $(CFLAGS) -I$(VITASDK)/$(PREFIX)/include/SDLGL -fpermissive -fno-exceptions -std=c++11
 
 LDFLAGS += -lSDL_mixer -lSceAudio_stub -lSceLibKernel_stub -lSceDisplay_stub -lSceGxm_stub	\
 	-lmikmod -lSceSysmodule_stub -lSceCtrl_stub -lSceTouch_stub -lm -lSceNet_stub -lvorbis \
